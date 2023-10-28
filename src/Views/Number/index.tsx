@@ -13,7 +13,7 @@ function Number() {
     const numberStr = number.toString();
     const length = numberStr.length;
 
-    // Check only up to the middle of the number
+    // Checando apenas até metade do intervalo informado
     for (let i = 0; i < Math.floor(length / 2); i++) {
       if (numberStr[i] !== numberStr[length - 1 - i]) {
         return false;
@@ -25,7 +25,7 @@ function Number() {
 
   const calculatePalindromicNumbers = () => {
     setLoading(true);
-    const minNumber = Math.max(parseInt(min), 1); // Ensure min is at least 1
+    const minNumber = Math.max(parseInt(min), 1); // Confirmando que o mínimo tem pelo menos até o valor 1
     const maxNumber = parseInt(max);
     const palindromicNumbers: number[] = [];
 
