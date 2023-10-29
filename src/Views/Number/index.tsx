@@ -48,12 +48,12 @@ function Number() {
             Números palíndromos
           </h1>
 
-          <p className="mt-[1.25rem] text-[1.25rem] text-center text-slate-300">
+          <p className="mt-[0.75rem] text-[1.25rem] text-center text-slate-300">
             Digite abaixo o mínimo e o máxima de uma sequência de números para
             serem mostrados todos os números palíndromos dessa sequência
           </p>
         </div>
-        <div className="mt-[3rem] flex content-between items-end">
+        <div className="mt-[1.55rem] flex content-between items-end">
           <div className="flex flex-col mr-4">
             <label
               className="mt-[1.25rem] text-[1.45rem] text-center text-slate-300"
