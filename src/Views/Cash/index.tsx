@@ -10,28 +10,65 @@ function Cash() {
   const [change, setChange] = useState<
     { [key: number]: number } | string | null
   >(null);
+  const [changeTotal, setChangeTotal] = useState<number>(0);
+  const [error, setError] = useState<string>("");
+
+  const reset = (): void => {
+    if (total !== "") {
+      setTotal("");
+    }
+
+    if (cash !== "") {
+      setCash("");
+    }
+
+    if (changeTotal !== 0) {
+      setChangeTotal(0);
+    }
+
+    if (change) {
+      setChange(null);
+    }
+
+    if (error !== "") {
+      setError("");
+    }
+  };
+
+  console.log(change);
 
   const calculateChange = (): void => {
+    reset();
+
     setLoading(true);
 
     const totalValue = Number(total);
     const cashValue = Number(cash);
 
     if (isNaN(totalValue) || isNaN(cashValue)) {
-      setChange("Invalid input. Please enter valid numbers.");
+      setError("Insira valores válidos");
+      setLoading(false);
+      return;
+    }
+
+    if (total === "" || cash === "") {
+      setError("Insira o total e a quantia oferecida");
       setLoading(false);
       return;
     }
 
     const availableBanknotes: number[] = [100, 10, 1]; // Banknote denominations in descending order
 
-    if (total > cash) {
-      setChange("Not enough cash provided");
+    if (totalValue > cashValue) {
+      setError("O dinheiro oferecido não foi o suficiente");
       setLoading(false);
       return;
     }
 
     let remainingChange: number = cashValue - totalValue;
+
+    setChangeTotal(remainingChange);
+
     const change: { [key: number]: number } = {};
 
     for (const banknote of availableBanknotes) {
@@ -56,12 +93,12 @@ function Cash() {
             Troco inteligente
           </h1>
 
-          <p className="mt-[1.25rem] text-[1.25rem] text-center text-slate-300">
+          <p className="mt-[0.75rem] text-[1.25rem] text-center text-slate-300">
             Digite abaixo o total da compra efetuada e o dinheiro oferecido para
             receber o troco da compra
           </p>
         </div>
-        <div className="mt-[3rem] flex content-between items-end">
+        <div className="mt-[1.55rem] flex content-between items-end">
           <div className="flex flex-col mr-4">
             <label
               className="mt-[1.25rem] text-[1.45rem] text-center text-slate-300"
@@ -103,20 +140,59 @@ function Cash() {
         </div>
 
         {change !== null && (
-          <div>
-            <h2>Change to be returned:</h2>
-            {typeof change === "string" ? (
-              <p>{change}</p>
-            ) : (
-              <ul>
-                {Object.keys(change).map((banknote) => (
-                  <li key={banknote}>
-                    {banknote} x {change[banknote]}
-                  </li>
-                ))}
-              </ul>
-            )}
+          <div className="flex justify-between my-[2rem] w-max">
+            <div>
+              <h2 className="mr-4 w-max text-[1.45rem] text-center text-slate-300">
+                Total da compra:
+              </h2>
+              <p className="text-[1.45rem] text-center text-slate-300">
+                {total}
+              </p>
+
+              <h2 className="mr-4 text-[1.45rem] text-center text-slate-300">
+                Total da compra:
+              </h2>
+              <p className="text-[1.45rem] text-center text-slate-300">
+                {total}
+              </p>
+            </div>
+
+            <div className="flex flex-col justify-between gap-2 ">
+              <div className="flex items-end">
+                <h2 className="mr-4 text-[1.45rem] text-center text-slate-300">
+                  Notas <br /> trocadas:
+                </h2>
+                {typeof change === "string" ? (
+                  <p>{change}</p>
+                ) : (
+                  <ul className="border-b-4 border-sky-500">
+                    {Object.keys(change).map((banknote) => (
+                      <li
+                        className="text-[1.45rem] text-center text-slate-300"
+                        key={banknote}
+                      >
+                        {banknote} x {change[parseInt(banknote)]}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="flex justify-between">
+                <h2 className="text-[1.45rem] text-center text-slate-300">
+                  Troco:
+                </h2>
+                <p className="text-[1.45rem] text-center text-slate-300">
+                  {changeTotal}
+                </p>
+              </div>
+            </div>
           </div>
+        )}
+
+        {error !== "" && (
+          <p className="mt-4 text-[1.55rem] text-center text-slate-300">
+            {error}
+          </p>
         )}
       </div>
     </>
