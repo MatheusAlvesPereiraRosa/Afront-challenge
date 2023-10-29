@@ -5,7 +5,9 @@ import { Header } from "../../Components/Header";
 
 function Cash() {
   const [total, setTotal] = useState<string>("");
+  const [oldTotal, setOldTotal] = useState<number>(0);
   const [cash, setCash] = useState<string>("");
+  const [oldCash, setOldCash] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [change, setChange] = useState<
     { [key: number]: number } | string | null
@@ -13,6 +15,7 @@ function Cash() {
   const [changeTotal, setChangeTotal] = useState<number>(0);
   const [error, setError] = useState<string>("");
 
+  // Função para resetar os valores (exceto os valores antigos/old)
   const reset = (): void => {
     if (total !== "") {
       setTotal("");
@@ -35,8 +38,7 @@ function Cash() {
     }
   };
 
-  console.log(change);
-
+  // Função para calcular troco
   const calculateChange = (): void => {
     reset();
 
@@ -44,6 +46,9 @@ function Cash() {
 
     const totalValue = Number(total);
     const cashValue = Number(cash);
+
+    setOldCash(cashValue);
+    setOldTotal(totalValue);
 
     if (isNaN(totalValue) || isNaN(cashValue)) {
       setError("Insira valores válidos");
@@ -141,20 +146,24 @@ function Cash() {
 
         {change !== null && (
           <div className="flex justify-between my-[2rem] w-max">
-            <div>
-              <h2 className="mr-4 w-max text-[1.45rem] text-center text-slate-300">
-                Total da compra:
-              </h2>
-              <p className="text-[1.45rem] text-center text-slate-300">
-                {total}
-              </p>
+            <div className="mr-4">
+              <div className="flex justify-between">
+                <h2 className="mr-4 w-max text-[1.45rem] text-center text-slate-300">
+                  T. compra:
+                </h2>
+                <p className="text-[1.45rem] text-center text-slate-100">
+                  {oldTotal}
+                </p>
+              </div>
 
-              <h2 className="mr-4 text-[1.45rem] text-center text-slate-300">
-                Total da compra:
-              </h2>
-              <p className="text-[1.45rem] text-center text-slate-300">
-                {total}
-              </p>
+              <div className="flex justify-between">
+                <h2 className="mr-4 text-[1.45rem] text-center text-slate-300">
+                  D. entregue:
+                </h2>
+                <p className="text-[1.45rem] text-center text-slate-100">
+                  {oldCash}
+                </p>
+              </div>
             </div>
 
             <div className="flex flex-col justify-between gap-2 ">
@@ -168,7 +177,7 @@ function Cash() {
                   <ul className="border-b-4 border-sky-500">
                     {Object.keys(change).map((banknote) => (
                       <li
-                        className="text-[1.45rem] text-center text-slate-300"
+                        className="text-[1.45rem] text-center text-slate-100"
                         key={banknote}
                       >
                         {banknote} x {change[parseInt(banknote)]}
@@ -181,7 +190,7 @@ function Cash() {
                 <h2 className="text-[1.45rem] text-center text-slate-300">
                   Troco:
                 </h2>
-                <p className="text-[1.45rem] text-center text-slate-300">
+                <p className="text-[1.45rem] text-center text-slate-100">
                   {changeTotal}
                 </p>
               </div>
