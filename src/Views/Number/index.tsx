@@ -42,7 +42,7 @@ function Number() {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center bg-slate-800 w-full min-h-[89.1vh] px-[10rem]">
+      <div className="flex flex-col items-center bg-slate-800 w-full min-h-[89.1vh] md:px-[6rem] lg:max-lg:px-[10rem]">
         <div className="max-w-[700px]">
           <h1 className="mt-[3rem] text-[3rem] text-center text-slate-50">
             Números palíndromos
@@ -53,7 +53,7 @@ function Number() {
             serem mostrados todos os números palíndromos dessa sequência
           </p>
         </div>
-        <div className="mt-[1.55rem] flex content-between items-end">
+        <div className="mt-[1.55rem] flex flex-wrap content-between items-end">
           <div className="flex flex-col mr-4">
             <label
               className="mt-[1.25rem] text-[1.45rem] text-center text-slate-300"
