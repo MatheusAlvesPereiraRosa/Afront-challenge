@@ -92,7 +92,7 @@ function Cash() {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center bg-slate-800 w-full min-h-[89.1vh] px-[10rem]">
+      <div className="flex flex-col items-center bg-slate-800 w-full min-h-[89.1vh] md:px-[6rem] lg:max-lg:px-[10rem]">
         <div className="max-w-[700px]">
           <h1 className="mt-[3rem] text-[3rem] text-center text-slate-50">
             Troco inteligente
@@ -103,8 +103,8 @@ function Cash() {
             receber o troco da compra
           </p>
         </div>
-        <div className="mt-[1.55rem] flex content-between items-end">
-          <div className="flex flex-col mr-4">
+        <div className="mt-[1.55rem] flex flex-wrap gap-4 justify-center items-end">
+          <div className="flex flex-col">
             <label
               className="mt-[1.25rem] text-[1.45rem] text-center text-slate-300"
               htmlFor="max"
@@ -137,7 +137,7 @@ function Cash() {
             />
           </div>
           <button
-            className="py-2 px-4 bg-slate-400 text-slate-900 hover:bg-slate-900 hover:text-slate-400 underline-offset-4 hover:ease-in transition duration-150 ease-out text-[1.25rem] font-bold rounded-md ml-6"
+            className="py-2 px-4 bg-slate-400 text-slate-900 hover:bg-slate-900 hover:text-slate-400 underline-offset-4 hover:ease-in transition duration-150 ease-out text-[1.25rem] font-bold rounded-md ml-2"
             onClick={calculateChange}
           >
             {!loading ? "Calcular" : ". . ."}

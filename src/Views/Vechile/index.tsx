@@ -122,7 +122,7 @@ function Vechile() {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center bg-slate-800 w-full min-h-[89.1vh] px-[10rem]">
+      <div className="flex flex-col items-center bg-slate-800 w-full min-h-[89.1vh] md:px-[6rem] lg:max-lg:px-[10rem]">
         <div className="max-w-[700px]">
           <h1 className="mt-[3rem] text-[3rem] text-center text-slate-50">
             Gerenciamento de veículos
@@ -132,7 +132,7 @@ function Vechile() {
             Insira as informações de seus veículos abaixo para salvá-las
           </p>
         </div>
-        <div className="mt-[1.55rem] flex flex-wrap gap-4 content-between">
+        <div className="mt-[1.55rem] flex flex-wrap gap-4 justify-center">
           <div className="flex flex-col ">
             <label className=" text-[1.45rem] text-center text-slate-300">
               Veículo
