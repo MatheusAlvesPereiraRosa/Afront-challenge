@@ -58,7 +58,6 @@ function Vechile() {
   const [passengers, setPassengers] = useState<1 | 2>(1);
   //const [error, setError] = useState<string>("");
 
-
   const saveVehicles = () => {
     // Criando objeto do veículo
 
@@ -227,12 +226,6 @@ function Vechile() {
             </button>
           </div>
         </div>
-
-        {error !== "" && (
-          <p className="mt-4 text-[1.55rem] text-center text-slate-300">
-            {error}
-          </p>
-        )}
       </div>
     </>
   );
