@@ -53,8 +53,8 @@ function Number() {
             serem mostrados todos os números palíndromos dessa sequência
           </p>
         </div>
-        <div className="mt-[1.55rem] flex flex-wrap content-between items-end">
-          <div className="flex flex-col mr-4">
+        <div className="mt-[1.55rem] flex flex-wrap justify-center gap-4 items-end">
+          <div className="flex flex-col">
             <label
               className="mt-[1.25rem] text-[1.45rem] text-center text-slate-300"
               htmlFor="min"
@@ -84,13 +84,14 @@ function Number() {
               onChange={(e) => setMax(e.target.value)}
             />
           </div>
-
-          <button
-            className="py-2 px-4 bg-slate-400 text-slate-900 hover:bg-slate-900 hover:text-slate-400 underline-offset-4 hover:ease-in transition duration-150 ease-out text-[1.25rem] font-bold rounded-md ml-6"
-            onClick={calculatePalindromicNumbers}
-          >
-            {!loading ? "Calcular" : ". . ."}
-          </button>
+          <div>
+            <button
+              className="py-2 px-4 bg-slate-400 text-slate-900 hover:bg-slate-900 hover:text-slate-400 underline-offset-4 hover:ease-in transition duration-150 ease-out text-[1.25rem] font-bold rounded-md lg:max-md:ml-4"
+              onClick={calculatePalindromicNumbers}
+            >
+              {!loading ? "Calcular" : ". . ."}
+            </button>
+          </div>
         </div>
 
         {result.length !== 0 && (
@@ -98,7 +99,7 @@ function Number() {
             <h2 className="text-[1.85rem] text-white text-center">
               Números palíndromes de {min} até {max}
             </h2>
-            <ul className="flex flex-wrap gap-6 my-4">
+            <ul className="flex flex-wrap gap-6 m-6">
               {result.map((number, index) => (
                 <li
                   className="p-2 text-[1.25rem] rounded-lg bg-teal-800 text-white hover:bg-white hover:text-teal-800 hover:underline underline-offset-4 hover:ease-in transition duration-150 ease-out"

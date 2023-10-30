@@ -82,7 +82,7 @@ function CEP() {
             className="py-2 px-4 bg-slate-400 text-slate-900 hover:bg-slate-900 hover:text-slate-400 underline-offset-4 hover:ease-in transition duration-150 ease-out text-[1.25rem] font-bold rounded-md"
             onClick={handleFetchLocationData}
           >
-            Fetch Location Data
+            Pegar informações dos CEPs
           </button>
         </div>
 

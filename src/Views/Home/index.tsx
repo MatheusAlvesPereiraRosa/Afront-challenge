@@ -8,7 +8,7 @@ import Cash from "../../Assets/cash.png";
 
 function Home() {
   return (
-    <div className="flex flex-col justify-evenly items-center bg-slate-800 min-w-[100vh] min-h-[100vh]">
+    <div className="flex flex-col justify-evenly items-center bg-slate-800 min-h-[100vh]">
       <div>
         <h1 className="text-[3rem] text-slate-50">
           Seja bem vindo ao meu teste!
